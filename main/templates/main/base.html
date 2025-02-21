@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <meta name="description"
+        content="Página para consultar el menú del día de la fic, frases de nuestro querido camarero Lázaro, y otras funcionalidades">
+    <meta name="author" content="peprolinbot">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'main/img/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'main/img/favicon/site.webmanifest' %}">
+
+
+
+    <title>{% block title %}competenciApp{% endblock %}</title>
+
+    <!-- CSS stuff
+    ================================================== -->
+
+    <!-- Bootstrap -->
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+
+    <!-- Custom CSS -->
+    <link href="{% static 'main/css/base.css' %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+
+
+    <!-- JavaScript stuff
+    ================================================== -->
+
+    <!-- Bootstrap -->
+    {% bootstrap_javascript %}
+
+    <!-- Custom JS -->
+    {% block js %}{% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+    {% include 'main/_items/navbar.html' %}
+    {% endblock %}
+
+    <div id="content-wrapper" class="container-fluid">
+        {% if messages %}
+        <div id="bootstrapMessagesDiv" class="px-2 pt-3">{% bootstrap_messages %}</div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="footer text-center">
+        <hr class="mx-5">
+        <p>made with ❤️ by <b>peprolinbot, thv4, marioozon</b> - <a
+                href="https://github.com/peprolinbot/competenciApp-hackudc25" target="_blank">Código fuente</a>
+        </p>
+    </footer>
+</body>
+
+</html>
