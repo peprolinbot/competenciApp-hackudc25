@@ -41,7 +41,7 @@
             <div>
                 <h3 class="mb-3">Skills</h5>
                     <ul class="list-group">
-                        {% for skill in skills %}
+                        {% for skill in user.skills.all %}
                         <li class=list-group-item><a href="{% url 'skill_management:skill_info' skill.id %}"
                                 class="text-decoration-none">{{ skill.name }} - {{ skill.description }}</a>
                         </li>
