@@ -30,12 +30,9 @@ def new_skill_form(request):
                 skill = existing_skill
             else:
                 skill = Skill.objects.create(name=new_skill)
-            # TODO: Check if skill already exists
-            # skill = form.save(commit=False)
-            # skill.save()
 
             skill.owners.add(request.user)
-            # skill.save()
+            skill.save()
 
             messages.success(
                 request, "🎉 Skill added succesfully. Now add the resources used to learn this skill.")
