@@ -30,7 +30,7 @@ This project is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html
 
 ### 🐳 Docker (Recommended)
 
-If you want to host your own instance of the web, it is as easy as a docker container. Check the environment variables below to configure important things.
+If you want to host your own instance of the web, it is as easy as a docker container. Check the environment variables below to configure important things, as this example below supposes things like the mail server doesn't use authentication, which isn't realistic.
 
 So the command is:
  
@@ -38,6 +38,9 @@ So the command is:
 docker run -d --name competenciapp \
     -e DJANGO_ALLOWED_HOSTS="example.com" \
     -e DJANGO_SECRET_KEY="changemetosomethingsecureplease" \
+    -e EMAIL_HOST="127.0.0.1" \
+    -e DEFAULT_FROM_EMAIL="competenciapp@example.com" \
+    -e EMAIL_BASE_URL="http://example.com" \
     -p 8080:80 \
     -v /data/competenciapp-cfg/db.sqlite3:/app/db.sqlite3 \
     quay.io/peprolinbot/competenciapp:latest
@@ -53,8 +56,19 @@ docker run -d --name competenciapp \
 | `DJANGO_CSRF_TRUSTED_ORIGINS` | Space-separated list of trusted origins for unsafe requests. Not needed in debug mode, and when running on port 80/443. _(Default: "")_ |
 | `DJANGO_SOCIALACCOUNT_PROVIDERS_FILE` | You can check more information [here](https://docs.allauth.org/en/dev/socialaccount/provider_configuration.html) _(Default: "/tmp/social_account_providers.json")_ |
 | `DJANGO_TIME_ZONE`  |  You can check more information [here](https://docs.djangoproject.com/en/5.1/ref/settings/#:~:text=TIME_ZONE) _(Default: "Europe/Madrid")_ |
+| `EMAIL_HOST`  |  Smtp server host  _(Default: "localhost")_
+| `EMAIL_USE_TLS`  |  _(Default: False)_
+| `EMAIL_USE_SSL`  |  _(Default: False)_
+| `EMAIL_PORT`  |  _(Default: 25)_
+| `EMAIL_HOST_USER`  |   _(Default: "")_
+| `EMAIL_HOST_PASSWORD`  |   _(Default: "")_
+| `DEFAULT_FROM_EMAIL`  |  Email address used when sending  _(Default: "webmaster@localhost")_
+| `EMAIL_BASE_URL`  |  Used for the images and urls in the emails  _(Default: "http://127.0.0.1:8000")_
+
 
 _**Note🗒️:**_ Booleans are only true when their value is the string "true" (not case sensitive)
+
+_**Note🗒️:**_ EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of those settings to True.
 
 _**Tip💡:**_ You can generate a secret key with `openssl rand -hex 32`
 
