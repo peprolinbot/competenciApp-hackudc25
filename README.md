@@ -16,6 +16,13 @@ This project takes place at [HackUDC 2025](https://hackudc.gpul.org) and was dev
 
 This project is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html).
 
+## ✨ Features
+- Multi**use**r 👥, all your company can **use** it (pun intended)
+- Supports SSO using [allauth](https://allauth.org)
+- Responsive, and we also have a PWA!!! 📱📱
+- Totally Dockerized🐋 in one small, optimized, alpine-based image
+- Uses tha amazing [Django framework](https://www.djangoproject.com/) 🐍🐍
+
 ## 📷 Screenshots
 
 ![Index page screenshot](screenshots/index.png)
