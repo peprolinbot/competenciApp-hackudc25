@@ -23,7 +23,8 @@
         {% endfor %}
     </ul>
 
-    <h3>Owner: {{ skill.owners.all|slice:":5"|join:", " }}</h3>
+    <h3>Owner: {% for owner in skill.owners.all|slice:":5" %}<a
+            href="{% url 'skill_management:user_profile' owner.id %}">{{ owner }}</a>{% if not forloop.last %}, {%endif %}{% endfor %}</h3>
 </div>
 
 {% endblock %}

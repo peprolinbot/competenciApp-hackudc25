@@ -24,7 +24,8 @@
         {% for skill in results %}
         <tr>
             <td><a href="{% url 'skill_management:skill_info' skill.id %}">{{ skill.name }}</a></td>
-            <td>{{ skill.owners.all|slice:":5"|join:", " }}</td>
+            <td>{% for owner in skill.owners.all|slice:":5" %}<a
+                    href="{% url 'skill_management:user_profile' owner.id %}">{{ owner }}</a>{% if not forloop.last %}, {%endif %}{% endfor %}</td>
             <td>{{ skill.description }}</td>
             </td>
         </tr>
