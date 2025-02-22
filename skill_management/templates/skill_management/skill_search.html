@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block divcontent %}
+<div class="row mb-3 mt-2">
+    <div class="container col-md-6 my-5">
+        <h1 class="text-center">Skill search</h1>
+        <form action="" method="get">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content="Search" extra_classes="w-100 mt-3" %}
+        </form>
+    </div>
+</div>
+<h3 class="text-center">Search results:</h3>
+{% if results %}
+<div class="row mb-3">
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Owners</th>
+            <th scope="col">Description</th>
+        </tr>
+        {% for skill in results %}
+        <tr>
+            <td>{{ skill.name }}</td>
+            <td>{{ skill.owners.all|slice:":5"|join:", " }}</td>
+            <td>{{ skill.description }}</td>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<div class="row mb-3 mt-2">
+    <h1 class="text-center"><b>No skills in the database</b> 😭</h1>
+</div>
+{% endif %}
+{% endblock %}

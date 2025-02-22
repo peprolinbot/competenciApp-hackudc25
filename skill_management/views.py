@@ -4,7 +4,7 @@ from django.forms.models import model_to_dict
 from django.http import JsonResponse
 
 from .models import User, Skill
-from .forms import SkillForm, ResourcesForm
+from .forms import SkillForm, ResourcesForm, SearchSkillForm
 
 
 from datetime import datetime
@@ -52,7 +52,22 @@ def add_resources_form(request, skill_id):
 
     return render(request, 'main/show_form.html', {'form_header': 'Add the resources used to learn that skill', 'form': form})
 
+
 def user_profile(request, user_id):
     user = request.user
     skills = user.skills.all()
-    return render(request, 'skill_management/user_profile.html', {'skills' : skills})
+    return render(request, 'skill_management/user_profile.html', {'skills': skills})
+
+
+def skill_search(request):
+    form = SearchSkillForm()
+    results = []
+
+    if request.method == 'GET':
+        form = SearchSkillForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Skill.objects.filter(
+                name__icontains=query)
+
+    return render(request, 'skill_management/skill_search.html', {'form': form, 'results': results})
