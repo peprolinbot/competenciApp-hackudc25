@@ -6,6 +6,7 @@
 {% block divcontent %}
 <div class="container col-md-6 my-5">
     {% block content %}{% endblock %}
+    <hr>
     <strong>{% trans "Menu:" %}</strong>
     <ul>
         {% if user.is_authenticated %}
