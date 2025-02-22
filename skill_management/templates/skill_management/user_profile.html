@@ -46,11 +46,11 @@
                                             <!-- Skills Lists -->
                                             <div>
                                                 <h5 class="mb-4">Skills</h5>
-                                                <ul>
+                                                <ul class = "list-group">
                                                     {% for skill in skills %}
-                                                        <li> <a href="{% url 'login' %}">{{ skill.name }}</a> - {{ skill.description }}</li>
+                                                        <li class = list-group-item>{{ skill.name }} - {{ skill.description }}</li>
                                                     {% empty %}
-                                                        <li>No skills registered.</li>
+                                                        <li class = list-group-item>No skills registered.</li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>

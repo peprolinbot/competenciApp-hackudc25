@@ -12,4 +12,5 @@ urlpatterns = [
     path("user/<int:user_id>/profile", views.user_profile, name="user_profile"),
     path("skill/search", views.skill_search,
          name="skill_search"),
+    path("skill/<int:skill_id>", views.skill_info, name="skill_info"),
 ]

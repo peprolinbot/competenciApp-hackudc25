@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
@@ -71,3 +71,7 @@ def skill_search(request):
                 name__icontains=query)
 
     return render(request, 'skill_management/skill_search.html', {'form': form, 'results': results})
+
+def skill_info(request, skill_id):
+    skill=get_object_or_404(Skill, pk=skill_id)
+    return render(request, 'skill_management/skill_info.html', {'skill': skill})
