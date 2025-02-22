@@ -8,7 +8,7 @@
     <h2>Name: {{ skill.name }}</h2>
     <p><strong>Description:</strong> {{ skill.description }}</p>
 
-    <h3>Resources</h3>
+    <h3>Resources <a href="{% url 'skill_management:add_resources_form' skill.id %}" target="_blank" class="btn btn-warning">Add</a></h3>
     <ul class="list-group mb-3">
         {% for resource in skill.resources.all %}
         <li class=list-group-item>

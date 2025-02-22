@@ -54,7 +54,7 @@ def add_resources_form(request, skill_id):
             resource.save()
 
             messages.success(
-                request, "🎉 Skill and resources added succesfully. You can keep adding more resources")
+                request, "🎉 Resources added succesfully. You can keep adding more resources")
             return redirect('skill_management:add_resources_form', skill_id)
     else:
         form = ResourcesForm()
