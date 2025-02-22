@@ -41,6 +41,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-3">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Log Out ({{ user.username }})</button>
+                    </form>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+                    {% endif %}
+                </li>
 
                 <!-- Theme selector -->
                 <li class="nav-item dropdown">
