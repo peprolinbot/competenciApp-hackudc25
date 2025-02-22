@@ -43,7 +43,8 @@
                     <ul class="list-group">
                         {% for skill in user.skills.all %}
                         <li class=list-group-item><a href="{% url 'skill_management:skill_info' skill.id %}"
-                                class="text-decoration-none">{{ skill.name }} - {{ skill.description }}</a>
+                                class="text-decoration-none">{{ skill.name }}</a><br>
+                            {{ skill.description }}
                         </li>
                         {% empty %}
                         <li class=list-group-item>No skills registered.</li>
