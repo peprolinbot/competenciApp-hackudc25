@@ -1,0 +1,79 @@
+{% extends 'main/base.html' %}
+{% block divcontent %}
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Profile Header -->
+            <div class="col-12 mb-4">
+                <div class="text-center">
+                    <div class="position-relative d-inline-block">
+                        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/5TPHTZQOG5HOZAO4GHC52FWJJQ.jpg" class="rounded-circle profile-pic" alt="Profile Picture" style="height: 120px; width: 120px;">
+                    </div>
+                    <h3 class="mt-3 mb-1">User Name</h3>
+                    <p class="text-muted mb-3">Role</p>
+                    <div class="d-flex justify-content-center gap-2 mb-4">
+                        <button class="btn btn-outline-primary"><i class="fas fa-envelope me-2"></i>Linkedin</button>
+                        <button class="btn btn-outline-primary"><i class="fas fa-user-plus me-2"></i>View Skills</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <!-- Content Area -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-9 ms-auto">
+                                        <div class="p-4">
+                                            <!-- Personal Information -->
+                                            <div class="mb-4">
+                                                <h5 class="mb-4">Personal Information</h5>
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Name</label>
+                                                        <input type="text" class="form-control" value="Pepe">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Second Name</label>
+                                                        <input type="text" class="form-control" value="Jones">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Email</label>
+                                                        <input type="email" class="form-control" value="pepej@example.com">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Phone</label>
+                                                        <input type="tel" class="form-control" value="+34 666 69 69 69">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label class="form-label">Description</label>
+                                                        <textarea class="form-control" rows="4">Lorem ipsum dolor sit amet consectetur adipisicing elit...</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Skills Lists -->
+                                            <div>
+                                                <h5 class="mb-4">Skills</h5>
+                                                <ul>
+                                                    {% for skill in skills %}
+                                                        <li>{{ skill.name }} - {{ skill.description }}</li>
+                                                    {% empty %}
+                                                        <li>No skills registered.</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -51,3 +51,8 @@ def add_resources_form(request, skill_id):
         form = ResourcesForm()
 
     return render(request, 'main/show_form.html', {'form_header': 'Add the resources used to learn that skill', 'form': form})
+
+def user_profile(request, user_id):
+    user = request.user
+    skills = user.skills.all()
+    return render(request, 'skill_management/user_profile.html', {'skills' : skills})
