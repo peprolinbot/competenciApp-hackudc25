@@ -3,12 +3,12 @@
 
 
 <div class="container col-md-6 my-5">
-    <h1>Skill Information</h1>
+    <h2>Skill Information - {{ skill.name }}</h2>
     <hr>
-    <h2>Name: {{ skill.name }}</h2>
     <p><strong>Description:</strong> {{ skill.description }}</p>
 
-    <h3>Resources <a href="{% url 'skill_management:add_resources_form' skill.id %}" target="_blank" class="btn btn-warning">Add</a></h3>
+    <h3>Resources <a href="{% url 'skill_management:add_resources_form' skill.id %}" target="_blank"
+            class="btn btn-warning">Add</a></h3>
     <ul class="list-group mb-3">
         {% for resource in skill.resources.all %}
         <li class=list-group-item>
@@ -23,8 +23,17 @@
         {% endfor %}
     </ul>
 
-    <h3>Owner: {% for owner in skill.owners.all|slice:":5" %}<a
-            href="{% url 'skill_management:user_profile' owner.id %}">{{ owner }}</a>{% if not forloop.last %}, {%endif %}{% endfor %}</h3>
+    <h3>Owners</h3>
+    <ul>
+        {% for owner in skill.owners.all|slice:":5" %}
+        <li>
+            <a href="{% url 'skill_management:user_profile' owner.id %}">
+                {{owner}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
 </div>
 
 {% endblock %}
