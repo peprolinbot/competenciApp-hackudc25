@@ -22,12 +22,20 @@ def new_skill_form(request):
         form = SkillForm(request.POST)
 
         if form.is_valid():
+            if form.is_valid():
+                existing_skill = form.cleaned_data.get('existing_skill')
+                new_skill = form.cleaned_data.get('new_skill')
+
+            if existing_skill:
+                skill = existing_skill
+            else:
+                skill = Skill.objects.create(name=new_skill)
             # TODO: Check if skill already exists
-            skill = form.save(commit=False)
-            skill.save()
+            # skill = form.save(commit=False)
+            # skill.save()
 
             skill.owners.add(request.user)
-            skill.save()
+            # skill.save()
 
             messages.success(
                 request, "🎉 Skill added succesfully. Now add the resources used to learn this skill.")
@@ -35,7 +43,7 @@ def new_skill_form(request):
     else:
         form = SkillForm()
 
-    return render(request, 'main/show_form.html', {'form_header': 'Add the details of the skill you have', 'form': form})
+    return render(request, 'main/show_form.html', {'form_header': 'Select an existing skill or create a new one you learned', 'form': form})
 
 
 @login_required
