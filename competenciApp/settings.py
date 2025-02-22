@@ -151,5 +151,8 @@ LOGOUT_REDIRECT_URL = "/"
 
 SOCIALACCOUNT_PROVIDERS_FILE = os.getenv('DJANGO_SOCIALACCOUNT_PROVIDERS_FILE',
                                          '/tmp/social_account_providers.json')
-with open(SOCIALACCOUNT_PROVIDERS_FILE, 'r') as f:
-    SOCIALACCOUNT_PROVIDERS = json.load(f)
+try:
+    with open(SOCIALACCOUNT_PROVIDERS_FILE, 'r') as f:
+        SOCIALACCOUNT_PROVIDERS = json.load(f)
+except FileNotFoundError:
+    pass
