@@ -3,30 +3,27 @@
 
 
 <div class="container col-md-6 my-5">
-    <div class="row">
-        <h1>Skill Information</h1>
-        <hr>
-        <h2>Name: {{ skill.name }}</h2>
-        <p><strong>Description:</strong> {{ skill.description }}</p>
+    <h1>Skill Information</h1>
+    <hr>
+    <h2>Name: {{ skill.name }}</h2>
+    <p><strong>Description:</strong> {{ skill.description }}</p>
 
-        <h3>Resources</h3>
-        <ul class = "list-group mb-3">
-            {% for resource in skill.resources.all %}
-                <li class = list-group-item>
-                    <strong>{{ resource.name }}</strong> - {{ resource.type }}
-                    {% if resource.url %}
-                         - <a href="{{ resource.url }}" target="_blank">View Resource</a>
-                    {% endif %}
-                    <p><strong>Description:</strong> {{ resource.description }}</p>
-                </li>
-            {% empty %}
-                <li class = list-group-item>No resources available for this skill.</li>
-            {% endfor %}
-        </ul>
+    <h3>Resources</h3>
+    <ul class="list-group mb-3">
+        {% for resource in skill.resources.all %}
+        <li class=list-group-item>
+            <strong>{{ resource.name }}</strong> - {{ resource.type }}
+            {% if resource.url %}
+            - <a href="{{ resource.url }}" target="_blank">View Resource</a>
+            {% endif %}
+            <p><strong>Description:</strong> {{ resource.description }}</p>
+        </li>
+        {% empty %}
+        <li class=list-group-item>No resources available for this skill.</li>
+        {% endfor %}
+    </ul>
 
-        <h3>Owner: {{ skill.owners.all|slice:":5"|join:", " }}</h3>
-
-    </div>
+    <h3>Owner: {{ skill.owners.all|slice:":5"|join:", " }}</h3>
 </div>
 
 {% endblock %}
