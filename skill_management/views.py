@@ -66,15 +66,15 @@ def user_profile(request, user_id):
 @login_required
 @csrf_exempt
 def skill_search(request):
-    form = SearchSkillForm()
-    results = []
-
     if request.method == 'GET':
         form = SearchSkillForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
             results = Skill.objects.filter(
                 name__icontains=query)
+        else:
+            form = SearchSkillForm()
+            results = []
 
     return render(request, 'skill_management/skill_search.html', {'form': form, 'results': results})
 
