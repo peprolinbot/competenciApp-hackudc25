@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Mario Denis Radu Trifu <m.denis.radu@udc.es>
+# SPDX-FileCopyrightText: 2025 Mario Ozón Casais <mario.ozon@udc.es>
+# SPDX-FileCopyrightText: 2025 Pedro Rey Anca <personal@peprolinbot.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
