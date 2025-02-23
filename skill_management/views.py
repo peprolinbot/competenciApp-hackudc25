@@ -51,12 +51,14 @@ def new_skill_form(request):
 
 @login_required
 def add_resources_form(request, skill_id):
+    skill = Skill.objects.get(id=skill_id)
+
     if request.method == 'POST':
         form = ResourcesForm(request.POST)
 
         if form.is_valid():
             resource = form.save(commit=False)
-            resource.skill = Skill.objects.get(id=skill_id)
+            resource.skill = skill
             resource.save()
 
             messages.success(
@@ -65,7 +67,7 @@ def add_resources_form(request, skill_id):
     else:
         form = ResourcesForm()
 
-    return render(request, 'main/show_form.html', {'form_header': 'Add the resources used to learn that skill', 'form': form})
+    return render(request, 'main/show_form.html', {'form_header': f'Add the resources used to learn that skill ({skill.name})', 'form': form})
 
 
 @login_required
