@@ -1,11 +1,3 @@
-<!--
-SPDX-FileCopyrightText: 2025 Mario Denis Radu Trifu <m.denis.radu@udc.es>
-SPDX-FileCopyrightText: 2025 Mario Ozón Casais <mario.ozon@udc.es>
-SPDX-FileCopyrightText: 2025 Pedro Rey Anca <personal@peprolinbot.com>
-
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
 # competenciApp
 
 ![competenciApp logo](main/static/main/img/logo.svg)
@@ -38,6 +30,8 @@ The logo used is in this project is free to use.
 ## 📷 Screenshots
 
 ![Index page screenshot](screenshots/index.png)
+
+![Sign In page screenshot](screenshots/signin.png)
 
 ![Skill search page screenshot](screenshots/skill_search.png)
 
