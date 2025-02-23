@@ -16,6 +16,10 @@ This project takes place at [HackUDC 2025](https://hackudc.gpul.org) and was dev
 
 This project is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html).
 
+## 🖼️ Logo Usage
+
+The logo used is in this project is free to use.
+
 ## ✨ Features
 - Multi**use**r 👥, all your company can **use** it (pun intended)
 - Supports SSO using [allauth](https://allauth.org)
@@ -40,7 +44,7 @@ This project is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html
 If you want to host your own instance of the web, it is as easy as a docker container. Check the environment variables below to configure important things, as this example below supposes things like the mail server doesn't use authentication, which isn't realistic.
 
 So the command is:
- 
+
 ```bash
 docker run -d --name competenciapp \
     -e DJANGO_ALLOWED_HOSTS="example.com" \
